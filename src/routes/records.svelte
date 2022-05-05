@@ -17,6 +17,7 @@
 
 	const filters = ['Filter', 'Active', 'Inactive'];
 	let selectedFilter = filters[0];
+	let searchText = '';
 	const data = [
 		{
 			region: {
@@ -94,12 +95,17 @@
 			update: 345678
 		}
 	];
+	let filteredData = data;
 </script>
 
 <main class="h-screen w-screen bg-indigo-300 p-2 sm:p-8 transition-all duration-75 overflow-x-auto">
 	<div class="bg-white rounded shadow-md ">
 		<form
 			class="h-14 flex items-stretch divide-x divide-gray-300 border-b border-gray-300 text-sm sm:text-base"
+			on:submit|preventDefault={() =>
+				(filteredData = data.filter((item) =>
+					item.region.name.toLowerCase().includes(searchText.toLowerCase())
+				))}
 		>
 			<div class="w-25 m-1 p-2 flex items-center">
 				<Listbox
@@ -111,7 +117,7 @@
 						<span class:text-gray-300={selectedFilter === filters[0]}>{selectedFilter}</span>
 						<div class="h-4 w-4 text-black"><ChevronDownIcon /></div>
 					</ListboxButton>
-					<ListboxOptions class="absolute bg-white shadow-md rounded">
+					<ListboxOptions class="absolute bg-white shadow-md rounded w-28">
 						{#each filters as filter}
 							<ListboxOption class="p-4" value={filter}>
 								<span class:text-gray-300={filter === filters[0]}>{filter}</span>
@@ -121,7 +127,7 @@
 				</Listbox>
 			</div>
 			<div class="flex justify-between w-full">
-				<input class="p-2 w-full" type="text" placeholder="Search" />
+				<input class="p-2 w-full" type="text" placeholder="Search" bind:value={searchText} />
 				<button class="p-4" type="submit"><SearchIcon class="h-6 w-6" /></button>
 			</div>
 		</form>
@@ -130,7 +136,7 @@
 			<table class="text-xs w-full">
 				<thead>
 					<tr class="border-b-2 border-black divide-x divide-gray-300">
-						<th class="p-3 font-light w-80">Region</th>
+						<th class="p-3 font-light">Region</th>
 						<th class="p-3 font-light">Last input</th>
 						<th class="p-3 font-light">Number of forms</th>
 						<th class="p-3 font-light">Number of voters</th>
@@ -138,12 +144,12 @@
 					</tr>
 				</thead>
 				<tbody class="divide-y divide-gray-300">
-					{#each data as dataPoint}
+					{#each filteredData as dataPoint}
 						<tr class="divide-x divide-gray-300 text-center">
 							<td class="py-2 px-4 flex justify-between gap-3">
 								<div class="flex items-center gap-3 flex-shrink-0">
 									<div class="h-6 w-6 bg-indigo-400 rounded-full p-1 text-white">S</div>
-									<p>{dataPoint.region.name}</p>
+									<div class="whitespace-nowrap">{dataPoint.region.name}</div>
 									<button class="h-6 w-6 bg-green-400 rounded p-1 text-white"
 										><DownloadIcon /></button
 									>
