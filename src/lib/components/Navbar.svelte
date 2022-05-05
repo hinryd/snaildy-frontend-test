@@ -4,7 +4,7 @@
 </script>
 
 <nav
-	class="sticky top-0 bg-white h-14 w-screen shadow-md grid grid-cols-12 divide-x divide-gray-300"
+	class="sticky top-0 bg-white h-14 w-screen shadow-md grid grid-cols-12 divide-x divide-gray-300 text-xs sm:text-base"
 >
 	<div class="col-span-8 flex items-stretch divide-x divide-gray-300">
 		<a class="p-4" href="/">
@@ -14,12 +14,12 @@
 	</div>
 	<a
 		class="col-span-2 flex items-center justify-center"
-		class:bg-indigo-100={$page.routeId === 'data/overall'}
-		href="/data/overall">Overall</a
+		class:bg-indigo-100={$page.url.searchParams.get('type') === 'overall'}
+		href="/records?type=overall">Overall</a
 	>
 	<a
 		class="col-span-2 flex items-center justify-center"
-		class:bg-indigo-100={$page.routeId === 'data/specific'}
-		href="/data/specific">Specific</a
+		class:bg-indigo-100={$page.url.searchParams.get('type') === 'specific'}
+		href="/records?type=specific">Specific</a
 	>
 </nav>
