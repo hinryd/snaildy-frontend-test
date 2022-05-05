@@ -9,7 +9,7 @@
 
 ## Stack
 
-- Framework: Sveltekit (learn more (here)[https://kit.svelte.dev/docs/introduction])
+- Framework: Sveltekit (learn more [here](https://kit.svelte.dev/docs/introduction))
 - CSS: `tailwindcss`
 - Components: `@rgossiaux/svelte-headlessui`
 - Icons: `@rgossiaux/svelte-heroicons`
