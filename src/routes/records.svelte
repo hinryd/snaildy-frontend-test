@@ -149,7 +149,7 @@
 							<td class="py-2 px-4 flex justify-between gap-3">
 								<div class="flex items-center gap-3 flex-shrink-0">
 									<div class="h-6 w-6 bg-indigo-400 rounded-full p-1 text-white">S</div>
-									<div class="whitespace-nowrap">{dataPoint.region.name}</div>
+									<p class="whitespace-nowrap">{dataPoint.region.name}</p>
 									<button class="h-6 w-6 bg-green-400 rounded p-1 text-white"
 										><DownloadIcon /></button
 									>
@@ -166,7 +166,7 @@
 									<span class="hidden sm:inline"
 										>district{dataPoint.region.districts.length !== 1 ? 's' : ''}</span
 									>
-									{#if dataPoint.region.showDistricts}
+									{#if !dataPoint.region.showDistricts}
 										<PlusIcon class="h-3 w-3" />
 									{:else}
 										<MinusIcon class="h-3 w-3" />
@@ -185,7 +185,7 @@
 										<div class="flex items-center gap-3 flex-shrink-0">
 											<DotsHorizontalIcon class="h-4 w-4 ml-2" />
 											<div class="h-6 w-6 bg-indigo-400 rounded-full p-1 text-white">D</div>
-											<p>{district.name}</p>
+											<p class="whitespace-nowrap">{district.name}</p>
 											<button class="h-6 w-6 bg-green-400 rounded p-1 text-white"
 												><DownloadIcon /></button
 											>
@@ -200,7 +200,7 @@
 											<span class="hidden sm:inline"
 												>township{district.cities.length !== 1 ? 's' : ''}</span
 											>
-											{#if district.showCities}
+											{#if !district.showCities}
 												<PlusIcon class="h-3 w-3" />
 											{:else}
 												<MinusIcon class="h-3 w-3" />
@@ -219,7 +219,7 @@
 												<div class="flex items-center gap-3 flex-grow flex-shrink-0">
 													<DotsHorizontalIcon class="h-4 w-4 ml-11" />
 													<div class="h-6 w-6 bg-indigo-400 rounded-full p-1 text-white">T</div>
-													<p>{city.name}</p>
+													<p class="whitespace-nowrap">{city.name}</p>
 													<button class="h-6 w-6 bg-green-400 rounded p-1 text-white"
 														><DownloadIcon /></button
 													>

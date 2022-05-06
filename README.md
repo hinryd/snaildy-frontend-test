@@ -13,3 +13,11 @@
 - CSS: `tailwindcss`
 - Components: `@rgossiaux/svelte-headlessui`
 - Icons: `@rgossiaux/svelte-heroicons`
+
+## Todos
+
+- [ ] Integrate fuzzy search
+- [ ] Integrate URL query parameters
+- [ ] Home page
+- [ ] Filter
+- [ ] Improve styling
